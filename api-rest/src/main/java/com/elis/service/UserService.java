@@ -1,19 +1,19 @@
 package com.elis.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import com.elis.dto.UserDto;
-import com.elis.model.User;
 
 public interface UserService {
 
 	List<UserDto> findAllUser();
 
-	UserDto findUserById(Long id);
+	UserDto findUserById(Long userId);
 
-	User saveUser(UserDto userDto);
-	
-	
+	UserDto saveUser(UserDto userDto);
+
+	void deleteUser(Long userId);
+
+	void updateUser(Long userId, UserDto userDto);
 
 }

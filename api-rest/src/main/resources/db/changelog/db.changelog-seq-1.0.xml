@@ -10,9 +10,9 @@
 
     
     <changeSet author="aymen" id="2">
-        <createSequence cacheSize="999999" catalogName="cat"
+        <createSequence catalogName="cat"
 			cycle="true" dataType="BIGINT" incrementBy="1" maxValue="999999"
 			minValue="1"  schemaName="public"
-			sequenceName="seq_user_id" startValue="1"/>
+			sequenceName="seq_user_id" startValue="2"/>
     </changeSet>
 </databaseChangeLog>

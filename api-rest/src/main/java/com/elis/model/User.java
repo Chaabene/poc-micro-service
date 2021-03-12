@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor 
 @NoArgsConstructor
 @Entity(name = "User")
-@Table(name = "user")
+@Table(name = "user",schema = "public")
 public class User {
 	
 	@Id
@@ -30,8 +30,7 @@ public class User {
 			generator = "seq_user_id"
 	)
 	@Column(
-			name="id",
-			updatable = false
+			name="id"
 	)
 	private Long id;
 	@Column(

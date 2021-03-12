@@ -35,16 +35,36 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDto findUserById(Long id) {
-		Optional<User> optionalUser = userRepository.findById(id);
-		return optionalUser.map(user -> modelMapper.map(user, UserDto.class))
-						   .orElseThrow(()->new IllegalStateException("User with id "+ id +" does not exist "));
+	public UserDto findUserById(Long userId) {
+		return userRepository.findById(userId).map(user -> modelMapper.map(user, UserDto.class)).orElseThrow(() -> {
+			throw new IllegalStateException("User with id " + userId + " does not exist ");
+		});
+
 	}
 
 	@Override
-	public User saveUser(UserDto userDto) {
+	public UserDto saveUser(UserDto userDto) {
 		User user = modelMapper.map(userDto, User.class);
-		return userRepository.save(user);
+		User savedUser = userRepository.save(user);
+		return modelMapper.map(savedUser, UserDto.class);
+	}
+
+	@Override
+	public void deleteUser(Long userId) {
+		boolean exists = userRepository.existsById(userId);
+		if (!exists) {
+			throw new IllegalStateException("User with id " + userId + " does not exist ");
+		}
+		userRepository.deleteById(userId);
+	}
+
+	@Override
+	public void updateUser(Long userId, final UserDto userDto) {
+		User user = userRepository.findById(userId).orElseThrow(() -> {
+			throw new IllegalStateException("User with id " + userId + " does not exist ");
+		});
+		userDto.setId(userId);
+		modelMapper.map(userDto, user);
 	}
 
 }

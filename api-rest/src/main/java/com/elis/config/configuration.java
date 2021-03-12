@@ -25,9 +25,9 @@ public class configuration {
 			user.setUsername("Aymen chaabene");
 			
 			User user2 = new User();
-			user.setAddress("villeJuif 2");
-			user.setUsername("Aymen chaabene 2");
-			userRepository.saveAll(Arrays.asList(user,user2))	;		
+			user2.setAddress("villeJuif 2");
+			user2.setUsername("Aymen chaabene 2");
+			//userRepository.saveAll(Arrays.asList(user,user2))	;		
 		};
 	}
 

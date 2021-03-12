@@ -1,4 +1,4 @@
-version: "3.8"
+version: "3.9"
 services: 
   restapi:
     container_name: restapi
@@ -8,6 +8,7 @@ services:
     depends_on: 
       db:
         condition: service_healthy
+    restart: on-failure
     ports: 
       - '8080:8080'
     #environment:
@@ -24,7 +25,7 @@ services:
     container_name: db
     image: postgres
     volumes:
-      - 'C:\Users\Aymen Chaaben\Desktop\Docker\postgres-db-data:/data/db'
+      - 'C:\Users\Aymen Chaaben\Desktop\Docker\postgres-db-data:/var/lib/postgresql/data'
     ports:
       - '5432:5432'
     stdin_open: true
